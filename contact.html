@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css" media="all" type="text/css">
+    <title>Contact</title>
+    <link rel="icon" href="icon.png" type="image/png">
+</head>
+<body>
+    <header>
+        <h1>Lukas Gliniorz</h1>
+        <nav>
+            <label for="toggle-1" class="toggle-menu">Menu</label>
+            <input type="checkbox" id="toggle-1">
+            <ul>
+                <li><a href="/index.html">Home</a></li>
+                <li><a href="/downloads.html">Downloads</a></li>
+                <li><a href="/contact.html">Contact</a></li>
+                <li><a href="/experiments.html">Experiments</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <h2>Contact</h2>
+            <p>
+                Lukas Gliniorz<br>
+                Hofangerstraße 169<br>
+                81735 München
+            </p>            
+        </section>
+        <section>
+            <h2>Contact form</h2>
+            <form action="submit.php" method="post">
+                <fieldset>
+                    <legend>Contact information</legend>
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+                    <br>
+                    <label for="email">Email:</label>
+                    <input type="text" id="email" name="email" required>
+                    <br>
+                    <label for="phone">Phone:</label>
+                    <input type="text" id="phone" name="phone" required>
+                </fieldset>
+                <br>
+                <fieldset>
+                    <legend>Message</legend>
+                    <label for="subject">Subject:</label>
+                    <datalist id="list">
+                        <option value="Job offer"></option>
+                        <option value="Question"></option>
+                        <option value="Other"></option>
+                    </datalist>
+                    <input type="text" id="subject" name="other" list="list">
+                    <br>
+                    <br>
+                    <textarea id="message" name ="message" rows="5" cols="30" required></textarea>                 
+                </fieldset>
+                <br>
+                <fieldset>
+                    <legend>Privacy Settings</legend>
+                    <details>
+                        <summary>Privacy Policy</summary>
+                        The given information will only be stored to contact you.
+                    </details>
+                    <input type="checkbox" id="agree" name="agree" required>
+                    <label for="agree">I agree to the Privacy Policy</label>
+                </fieldset>
+                <br>
+                <button type="submit">Submit</button>
+            </form>
+        </section>
+
+    </main>
+    <footer>
+        <p>Made by Lukas Gliniorz, 2023</p>
+    </footer>
+
+</body>
+</html>

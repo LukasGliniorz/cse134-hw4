@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css" media="all" type="text/css">
+    <style>
+        main {
+            display: block;
+        }
+    </style>
+    <title>Experiments</title>
+    <link rel="icon" href="icon.png" type="image/png">
+</head>
+<body>
+    <header>
+        <h1>Lukas Gliniorz</h1>
+        <nav>
+            <label for="toggle-1" class="toggle-menu">Menu</label>
+            <input type="checkbox" id="toggle-1">
+            <ul>
+                <li><a href="/index.html">Home</a></li>
+                <li><a href="/downloads.html">Downloads</a></li>
+                <li><a href="/contact.html">Contact</a></li>
+                <li><a href="/experiments.html">Experiments</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h2>Experiments</h2>
+        <pre><code>
+            function HelloWorld() {
+                console.log("Hello World");
+            }
+        </code></pre>
+        <figure>
+            <canvas id="blueRectangle" width="400" height="100"></canvas>
+            <script>
+                const canvas = document.getElementById("blueRectangle");
+                const ctx = canvas.getContext("2d");
+
+                ctx.fillStyle = "blue";
+                ctx.fillRect(50, 50, 100, 50);
+            </script>
+            <figcaption>This is a blue rectangle to show my ability to include the canvas tag with
+                some JavaScript.</figcaption>
+        </figure>
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <mi>E</mi>
+            <mo>=</mo>
+            <mi>m</mi>
+            <msup>
+                <mi>c</mi>
+                <mn>2</mn>
+            </msup>
+        </math>
+    </main>
+    <footer>
+        <p>Made by Lukas Gliniorz, 2023</p>
+    </footer>
+
+</body>
+</html>
