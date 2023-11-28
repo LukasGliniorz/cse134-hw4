@@ -4,6 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css" media="all" type="text/css">
+    <style>
+        input:valid, textarea:valid {
+            border: 2px solid green;
+        }
+
+        input:invalid:focus, textarea:invalid:focus {
+            border: 2px solid red;
+        }
+
+        input:invalid:focus::after {
+            content: "Invalid input";
+            border: 2px solid red;
+        }
+    </style>
     <title>Contact</title>
     <link rel="icon" href="icon.png" type="image/png">
 </head>
@@ -32,44 +46,26 @@
         </section>
         <section>
             <h2>Contact form</h2>
-            <form action="submit.php" method="post">
+            <form action="https://httpbin.org/post" method="post">
                 <fieldset>
                     <legend>Contact information</legend>
                     <label for="name">Name:</label>
                     <input type="text" id="name" name="name" required>
                     <br>
                     <label for="email">Email:</label>
-                    <input type="text" id="email" name="email" required>
+                    <input type="email" id="email" name="email" required>
                     <br>
-                    <label for="phone">Phone:</label>
-                    <input type="text" id="phone" name="phone" required>
-                </fieldset>
-                <br>
-                <fieldset>
-                    <legend>Message</legend>
-                    <label for="subject">Subject:</label>
-                    <datalist id="list">
-                        <option value="Job offer"></option>
-                        <option value="Question"></option>
-                        <option value="Other"></option>
-                    </datalist>
-                    <input type="text" id="subject" name="other" list="list">
+                    <label for="comments">Comments:</label>
+                    <textarea id="comments" name ="comments" rows="5" cols="30" required minlength="5" maxlength="500"></textarea>   
+                    <input type="hidden" name="possible_bot" value="true"> 
                     <br>
+                    <output name="errorOutput"></output>
+                    <output name="infoOutput"></output>             
                     <br>
-                    <textarea id="message" name ="message" rows="5" cols="30" required></textarea>                 
+                    <button type="submit">Submit</button>
+                    <output name="errorOutput"></output>
+                    <output name="infoOutput"></output>
                 </fieldset>
-                <br>
-                <fieldset>
-                    <legend>Privacy Settings</legend>
-                    <details>
-                        <summary>Privacy Policy</summary>
-                        The given information will only be stored to contact you.
-                    </details>
-                    <input type="checkbox" id="agree" name="agree" required>
-                    <label for="agree">I agree to the Privacy Policy</label>
-                </fieldset>
-                <br>
-                <button type="submit">Submit</button>
             </form>
         </section>
 
