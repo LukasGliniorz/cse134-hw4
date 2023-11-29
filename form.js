@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
     var errorOutput = document.querySelector('output[name="errorOutput"]');
     var infoOutput = document.querySelector('output[name="infoOutput"]');
     var maxCharacters = 500;
+    var formErrors = [];
 
     // Function to check the validity of each input
     function checkInputValidity(input) {
@@ -24,10 +25,29 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
+    function captureAndShowError(message, input) {
+        // Capture error
+        if (input && input.name) {
+            var error = {
+                field: input.name,
+                message: message,
+                time: new Date().toISOString()
+            };
+            formErrors.push(error);
+        }
+
+        // Show error
+        showError(message, input);
+    }
+
     // Event listeners for real-time validation feedback
     [nameInput, emailInput, commentsInput].forEach(function(input) {
         input.addEventListener('blur', function() {
-            checkInputValidity(input);
+            //checkInputValidity(input);
+            if (!input.checkValidity()) {
+                var errorMessage = input.validationMessage;
+                captureAndShowError(errorMessage, input);
+            }
         });
 
         // Clear custom validity messages when the user starts to edit the field
@@ -55,7 +75,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // If any character is invalid, show error and flash input
         if (!isValid) {
             input.value = newValue.slice(0, -1); // Remove last character
-            showError("Illegal character entered");
+            showError("Illegal character entered", input);
     
             // Add the flash effect to the input
             input.classList.add('flash-input');
@@ -63,11 +83,30 @@ document.addEventListener('DOMContentLoaded', function() {
                 input.classList.remove('flash-input');
             }, 500); // Remove the flash effect after 0.5 seconds
         }
+
+        // Check validity for type-specific errors (like email)
+        if (!input.checkValidity()) {
+            isValid = false;
+            showError(input.validationMessage, input);
+        }
+
+
     }    
     
-    function showError(message) {
+    function showError(message, input) {
         errorOutput.textContent = message;
         errorOutput.classList.add('flash');
+    
+        // Add error to the formErrors array
+        if (input && input.name) {
+            var error = {
+                field: input.name,
+                message: message,
+                time: new Date().toISOString()
+            };
+            formErrors.push(error);
+        }
+    
         setTimeout(function() {
             errorOutput.classList.remove('flash');
         }, 3000); // Message will fade out after 3 seconds
@@ -94,6 +133,30 @@ document.addEventListener('DOMContentLoaded', function() {
         } else {
             // Default style
             infoOutput.style.color = 'black';
+        }
+    });
+
+    form.addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        // Check each input for validity and capture errors
+        [nameInput, emailInput, commentsInput].forEach(function(input) {
+            if (!input.checkValidity()) {
+                var errorMessage = input.validationMessage;
+                captureAndShowError(errorMessage, input);
+            }
+        });
+        
+        // Serialize form errors to JSON and add to hidden input
+        //document.getElementById('form-errors').value = JSON.stringify(formErrors);
+    
+        // Check form validity
+        var formValid = form.checkValidity();
+        if (formValid) {
+            document.getElementById('form-errors').value = JSON.stringify(formErrors);
+            form.submit();
+        } else {
+            showError('Please correct the errors in the form.', {name: 'form'});
         }
     });
 });

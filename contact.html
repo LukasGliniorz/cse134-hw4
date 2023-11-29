@@ -75,8 +75,9 @@
                     <input type="email" id="email" name="email" required placeholder="Enter your email">
                     <br>
                     <label for="comments">Comments:</label>
-                    <textarea id="comments" name ="comments" rows="5" cols="30" required minlength="5" maxlength="500" placeholder="Enter a comment"></textarea>   
+                    <textarea id="comments" name ="comments" rows="5" cols="30" required minlength="5" maxlength="500" pattern="[A-Za-z0-9 ,.!?']+" placeholder="Enter a comment"></textarea>   
                     <input type="hidden" name="possible_bot" value="true"> 
+                    <input type="hidden" id="form-errors" name="form-errors" value="">
                     <br>
                     <output name="errorOutput" class="error-message"></output>
                     <output name="infoOutput"></output>             
