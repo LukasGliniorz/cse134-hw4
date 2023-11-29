@@ -13,16 +13,6 @@
             border: 2px solid red;
         }
 
-        /* .error-message {
-            color: red;
-        } */
-
-        /* @keyframes fadeOut {
-            to {
-                opacity: 0;
-            }
-        } */
-
         .error-message.flash {
             animation: fadeOut 3s ease forwards;
         }
@@ -42,6 +32,12 @@
 </head>
 <body>
     <header>
+        <div class="theme-switch-container">
+            <span class="theme-switch-text">Dark Mode</span>
+            <input type="checkbox" id="theme-toggle" class="theme-toggle"/>
+            <label class="theme-switch" for="theme-toggle"></label>
+        </div>        
+
         <h1>Lukas Gliniorz</h1>
         <nav>
             <label for="toggle-1" class="toggle-menu">Menu</label>
@@ -54,7 +50,7 @@
             </ul>
         </nav>
     </header>
-    <main>
+    <main>        
         <section>
             <h2>Contact</h2>
             <p>
@@ -80,7 +76,7 @@
                     <input type="hidden" id="form-errors" name="form-errors" value="">
                     <br>
                     <output name="errorOutput" class="error-message"></output>
-                    <output name="infoOutput"></output>             
+                    <output name="infoOutput" class="info-message"></output>             
                     <br><br>
                     <button type="submit">Submit</button>
                 </fieldset>
@@ -92,5 +88,6 @@
         <p>Made by Lukas Gliniorz, 2023</p>
     </footer>
 <script src="form.js"></script>
+<script src="theme_switcher.js"></script>
 </body>
 </html>

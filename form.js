@@ -26,7 +26,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function captureAndShowError(message, input) {
-        // Capture error
         if (input && input.name) {
             var error = {
                 field: input.name,
@@ -36,14 +35,12 @@ document.addEventListener('DOMContentLoaded', function() {
             formErrors.push(error);
         }
 
-        // Show error
         showError(message, input);
     }
 
     // Event listeners for real-time validation feedback
     [nameInput, emailInput, commentsInput].forEach(function(input) {
         input.addEventListener('blur', function() {
-            //checkInputValidity(input);
             if (!input.checkValidity()) {
                 var errorMessage = input.validationMessage;
                 captureAndShowError(errorMessage, input);
@@ -84,7 +81,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }, 500); // Remove the flash effect after 0.5 seconds
         }
 
-        // Check validity for type-specific errors (like email)
         if (!input.checkValidity()) {
             isValid = false;
             showError(input.validationMessage, input);
@@ -112,7 +108,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 3000); // Message will fade out after 3 seconds
     }
 
-    // Attach event listeners
     [nameInput, emailInput, commentsInput].forEach(function(input) {
         if (input.getAttribute('pattern')) {
             input.addEventListener('input', handleInput);
@@ -123,16 +118,12 @@ document.addEventListener('DOMContentLoaded', function() {
         var remaining = maxCharacters - commentsInput.value.length;
         
         infoOutput.textContent = remaining + " characters remaining";
-
+        infoOutput.classList.remove('warn', 'error');
+    
         if (remaining <= 50 && remaining > 10) {
-            // Warn style
-            infoOutput.style.color = 'orange';
+            infoOutput.classList.add('warn');
         } else if (remaining <= 10) {
-            // Error style
-            infoOutput.style.color = 'red';
-        } else {
-            // Default style
-            infoOutput.style.color = 'black';
+            infoOutput.classList.add('error');
         }
     });
 
@@ -147,10 +138,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
         
-        // Serialize form errors to JSON and add to hidden input
-        //document.getElementById('form-errors').value = JSON.stringify(formErrors);
-    
-        // Check form validity
         var formValid = form.checkValidity();
         if (formValid) {
             document.getElementById('form-errors').value = JSON.stringify(formErrors);
@@ -160,3 +147,4 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+

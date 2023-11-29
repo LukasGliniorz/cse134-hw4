@@ -3,6 +3,10 @@
     --text-color: #333;
     --background-color: #f4f4f4;
     --background-hover-color: color-mix(in srgb, black 60%, white 40%);
+    /* --background-light: #ffffff; */
+    /* --text-light: #000000; */
+    --background-dark: #333;
+    --text-dark: #f4f4f4;
 }
 
 /* CSS Reset */
@@ -76,7 +80,7 @@ main {
 }
   
 section {
-    background: white;
+    background: var(--background-color);
     padding: 2rem;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
@@ -228,7 +232,8 @@ form {
     max-width: 600px;
     margin: 20px auto;
     padding: 20px;
-    background: #fff;
+    /* background: #fff; */
+    background: var(--background-color);
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
@@ -295,4 +300,82 @@ input[type="checkbox"] + label {
     textarea {
         width: calc(100% - 10px);
     }
+}
+
+#theme-toggle {
+    display: none;
+}
+
+.theme-switch {
+    position: relative;
+    display: inline-flex;
+    width: 60px;
+    height: 34px;
+    background-color: #ccc;
+    border-radius: 34px;
+    cursor: pointer;
+    align-items: center;
+}
+
+.theme-switch-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.theme-switch-text {
+    font-size: 1rem;
+    color: fff;
+}
+
+.theme-switch::after {
+    content: "";
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 30px;
+    height: 30px;
+    background-color: white;
+    border-radius: 50%;
+    transition: left 0.4s;
+}
+
+#theme-toggle:checked + .theme-switch::after {
+    left: 26px;
+}
+
+#theme-toggle:checked + .theme-switch {
+    background-color: #4CAF50;
+}
+
+body.light-mode, body.light-mode form, body.light-mode section {
+    --background-color: #f4f4f4;
+    --text-color: #333;
+}
+
+body.dark-mode, body.dark-mode form, body.dark-mode section {
+    --background-color: #333;
+    --text-color: #f4f4f4;
+}
+
+body.dark-mode input, 
+body.dark-mode textarea, 
+body.dark-mode select {
+    color: #000;
+}
+
+form *, section * {
+    color: inherit;
+}
+
+.info-output {
+    color: var(--text-color);
+}
+
+.info-output.warn {
+    color: orange;
+}
+
+.info-output.error {
+    color: red;
 }
