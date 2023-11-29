@@ -191,21 +191,6 @@ section:has(picture) {
     border: 1px solid blue;
 }
   
-/* Example of Scoped CSS with Nesting */
-section#about {
-    --section-background: #e7f3fe;
-  
-    h2 {
-      color: var(--primary-color, green);
-    }
-  
-    p {
-      font-size: 0.9rem;
-    }
-  
-    background-color: var(--section-background);
-}
-  
 /* Relative Units */
 h1 {
     font-size: 2rem;
