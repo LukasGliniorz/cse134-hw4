@@ -11,30 +11,7 @@
 
         input:invalid:not(:placeholder-shown), textarea:invalid:not(:placeholder-shown) {
             border: 2px solid red;
-        }
-
-        /* .error-message {
-            color: red;
-        } */
-
-        /* @keyframes fadeOut {
-            to {
-                opacity: 0;
-            }
-        } */
-
-        .error-message.flash {
-            animation: fadeOut 3s ease forwards;
-        }
-
-        .flash-input {
-            animation: flashAnimation 0.5s;
-        }
-
-@keyframes flashAnimation {
-    0% { background-color: red; }
-    100% { background-color: white; }
-}
+        }   
 
     </style>
     <title>Contact</title>
@@ -78,10 +55,12 @@
                     <textarea id="comments" name ="comments" rows="5" cols="30" required minlength="5" maxlength="500" placeholder="Enter a comment"></textarea>   
                     <input type="hidden" name="possible_bot" value="true"> 
                     <br>
-                    <output name="errorOutput" class="error-message"></output>
+                    <output name="errorOutput"></output>
                     <output name="infoOutput"></output>             
-                    <br><br>
+                    <br>
                     <button type="submit">Submit</button>
+                    <output name="errorOutput"></output>
+                    <output name="infoOutput"></output>
                 </fieldset>
             </form>
         </section>
@@ -90,6 +69,6 @@
     <footer>
         <p>Made by Lukas Gliniorz, 2023</p>
     </footer>
-<script src="form.js"></script>
+
 </body>
 </html>
